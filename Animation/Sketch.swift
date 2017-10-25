@@ -9,8 +9,6 @@ class Sketch : NSObject {
     // Position of circle
     var x : Int
     
-    //change in position
-    var dx : Int //difference in x
     
     // This function runs once
     override init() {
@@ -19,37 +17,39 @@ class Sketch : NSObject {
         canvas = Canvas(width: 500, height: 500)
         
         // Set starting position
-        x = 0
+        x = 250
         
         //set the difference for x
-        dx = 3
+        
     }
-    
     // Runs in a loop, forever, to create the animated effect
     func draw() {
         
-        //clear the background
-        canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
-        
         // Change position
-        x += dx
+        x += 1
         
-        //check the position and reverce course
-        //if we go off the right edge of the screem
-        if x > 500{
-            dx = -3
-        }
-        
-        //if we go off the left edge of the screem
-        if x < 0 {
-            dx = 3
-        }
-        
+        //change the border of the circle
+       
         // Draw an ellipse in the middle of the canvas
-        canvas.fillColor = Color.black
+        canvas.fillColor = Color.purple
+         canvas.borderColor = Color.purple
+        canvas.drawEllipse(centreX: x, centreY: 450, width: 50, height: 50)
+        canvas.fillColor = Color.green
+         canvas.borderColor = Color.green
         canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
+        canvas.fillColor = Color.black
+         canvas.borderColor = Color.black
+        canvas.drawEllipse(centreX: x, centreY: 50, width: 50, height: 50)
+  
+        //draw an ellipse in the middle of the canvas
+        canvas.fillColor = Color.orange
+         canvas.borderColor = Color.orange
+        canvas.drawEllipse(centreX: 500-x, centreY: 350, width: 50, height: 50)
+        canvas.fillColor = Color.blue
+         canvas.borderColor = Color.blue
+        canvas.drawEllipse(centreX: 500-x, centreY: 150, width: 50, height: 50)
         
     }
-    
-}
+    }
+
+
