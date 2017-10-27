@@ -12,6 +12,7 @@ class Sketch : NSObject {
     //change in position
     var dx : Int //difference in x
     
+    
     // This function runs once
     override init() {
         
@@ -23,6 +24,7 @@ class Sketch : NSObject {
         
         //set the difference for x
         dx = 3
+
     }
     
     // Runs in a loop, forever, to create the animated effect
@@ -41,14 +43,19 @@ class Sketch : NSObject {
             dx = -3
         }
         
+        if 250+x > 500 {
+            dx = 250-x
+        }
         //if we go off the left edge of the screem
         if x < 0 {
             dx = 3
+    
+          
         }
         
         // Draw an ellipse in the middle of the canvas
         canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
+        canvas.drawEllipse(centreX: x, centreY: 250+x, width: 50, height: 50)
         
     }
     
