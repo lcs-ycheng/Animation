@@ -8,9 +8,10 @@ class Sketch : NSObject {
     
     // Position of circle
     var x : Int
+    var y : Int
     
     //change in position
-    var dx : Int //difference in x
+    var dy : Int //difference in y
     
     // This function runs once
     override init() {
@@ -20,35 +21,29 @@ class Sketch : NSObject {
         
         // Set starting position
         x = 0
+        y = 0
         
-        //set the difference for x
-        dx = 3
+        //set the difference for y
+        dy = 2
     }
     
     // Runs in a loop, forever, to create the animated effect
     func draw() {
         
-        //clear the background
-        canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
         
         // Change position
-        x += dx
+        y += dy
         
         //check the position and reverce course
-        //if we go off the right edge of the screem
-        if x > 500{
-            dx = -3
-        }
         
-        //if we go off the left edge of the screem
-        if x < 0 {
-            dx = 3
+        if y > 520{
+            dy = -2
         }
-        
+    
+       x += 1
         // Draw an ellipse in the middle of the canvas
         canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
+        canvas.drawEllipse(centreX: x, centreY: y, width: 50, height: 50)
         
     }
     
