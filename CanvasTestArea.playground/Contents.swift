@@ -31,39 +31,52 @@ canvas.translate(byX: 400, byY: 300)
 // Draw the axes so we can see where we are
 canvas.drawAxes()
 
+// draw the background in Black
+canvas.fillColor = Color.black
+canvas.drawRectangle(centreX: 0, centreY: 0, width: 800, height: 600)
+
 // Draw a ghost relative to the origin
 canvas.fillColor = Color.white
 
-// First make an ellipse to form the body
-canvas.drawEllipse(centreX: 0, centreY: 0, width: 200, height: 200)
+// First make an ellipse to form the head
+canvas.drawEllipse(centreX: 0, centreY: 0, width: 100, height: 100)
+//a recangle to form the body
+canvas.drawRectangle(centreX: 0, centreY: -40, width: 100, height: 100)
 
-// Now "cut out" the wings and head by overlapping circles
+// Now "cut out" the body by overlapping circles
 canvas.fillColor = Color.white
 
-// Underside of wings
-canvas.drawEllipse(centreX: -70, centreY: -10, width: 50, height: 50) // left
-canvas.drawEllipse(centreX: -35, centreY: -10, width: 50, height: 50) // left middle
-canvas.drawEllipse(centreX: 35, centreY: -10, width: 50, height: 50) // right middle
-canvas.drawEllipse(centreX: 70, centreY: -10, width: 50, height: 50) // right
+// The bottom of the body
+canvas.drawEllipse(centreX: -35, centreY: -90, width: 40, height: 40) // left
+canvas.drawEllipse(centreX: 0, centreY: -90, width: 40, height: 40) //  middle
+canvas.drawEllipse(centreX: 35, centreY: -90, width: 40, height: 40) // right
 
-// Further down
-canvas.drawEllipse(centreX: 0, centreY: -50, width: 50, height: 100) // middle
-
-// Get rid of rest further down
-canvas.drawRectangle(centreX: 0, centreY: -35, width: 200, height: 30)
-
-// Now add the head
+// The eyes and mouth
 canvas.fillColor = Color.black
-var headVertices : [NSPoint] = []
-headVertices.append(NSPoint(x: -40, y: 40))
-headVertices.append(NSPoint(x: 40, y: 40))
-headVertices.append(NSPoint(x: 30, y: 80))
-headVertices.append(NSPoint(x: 20, y: 60))
-headVertices.append(NSPoint(x: -20, y: 60))
-headVertices.append(NSPoint(x: -30, y: 80))
-headVertices.append(NSPoint(x: -40, y: 40)) // end where we started
-canvas.drawCustomShape(with: headVertices)
+canvas.drawEllipse(centreX: -20, centreY: 0, width: 10, height: 10)
+canvas.drawEllipse(centreX: 20, centreY: 0, width: 10, height: 10)
+canvas.drawEllipse(centreX: 0, centreY: -20, width: 20, height: 10)
 
+//change color for the another circle
+canvas.fillColor = Color.white
+//draw another circle
+canvas.drawEllipse(centreX: 200, centreY: 100, width: 100, height: 100)
+//a recangle to form the body
+canvas.drawRectangle(centreX: 200, centreY: 50, width: 100, height: 100)
+
+// Now "cut out" the body by overlapping circles
+canvas.fillColor = Color.white
+
+// The bottom of the body
+canvas.drawEllipse(centreX: 165, centreY: 5, width: 40, height: 40) // left
+canvas.drawEllipse(centreX: 200, centreY: 5, width: 40, height: 40) //  middle
+canvas.drawEllipse(centreX: 235, centreY: 5, width: 40, height: 40) // right
+
+// The eyes and mouth
+canvas.fillColor = Color.black
+canvas.drawEllipse(centreX: 180, centreY: 100, width: 10, height: 10)
+canvas.drawEllipse(centreX: 220, centreY: 100, width: 10, height: 10)
+canvas.drawEllipse(centreX: 200, centreY: 90, width: 10, height: 20)
 /*:
  ## Use source control
  To keep your work organized, and receive feedback, source control is a must.
