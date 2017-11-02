@@ -6,11 +6,8 @@ class Sketch : NSObject {
     //       Therefore, the line immediately below must always be present.
     let canvas : Canvas
     
-    // Position of circle
     var x : Int
-    
-    //change in position
-    var dx : Int //difference in x
+    var y : Int
     
     // This function runs once
     override init() {
@@ -20,36 +17,27 @@ class Sketch : NSObject {
         
         // Set starting position
         x = 0
-        
-        //set the difference for x
-        dx = 3
+        y = 0
     }
     
     // Runs in a loop, forever, to create the animated effect
     func draw() {
         
-        //clear the background
-        canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
-        
         // Change position
-        x += dx
+              x += 1
+        let a : Double = -1/25
         
         //check the position and reverce course
-        //if we go off the right edge of the screem
-        if x > 500{
-            dx = -3
-        }
         
-        //if we go off the left edge of the screem
-        if x < 0 {
-            dx = 3
-        }
-        
+        let y = Int(a*(Double(x)-50)*(Double(x)-50)+100)
+        for k in stride(from: 0, to: 500, by: 100){
+
         // Draw an ellipse in the middle of the canvas
         canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
-        
+        canvas.drawEllipse(centreX: x, centreY: y+k, width: 10, height: 10)
+        }
     }
     
 }
+
+
