@@ -28,8 +28,9 @@ class Sketch : NSObject {
         let a : Double = -1/25
         
         //check the position and reverce course
-        
         let y = Int(a*(Double(x)-50)*(Double(x)-50)+100)
+       
+        //make a loop
         for k in stride(from: 0, to: 500, by: 100){
 
         // Draw an ellipse in the middle of the canvas
