@@ -11,6 +11,7 @@ class Sketch : NSObject {
     var y2 : Int
     var x2 : Int
     var y1 : Int
+    var result : Int
     //change in position
     var dx1 : Int //difference in x1
     var dy1 : Int//difference in y1
@@ -28,6 +29,7 @@ class Sketch : NSObject {
         y1 = 100
       x2 = 10
       y2 = 10
+        result = 0
         //set the difference for x
         dx1 = 3
         dy1 = 3
@@ -92,19 +94,28 @@ class Sketch : NSObject {
         
         //draw the line
         //work out the distance between these points
-        
         //Get difference of the x's
         let deltaX = x1-x2
         //Get difference of the y's
-        let deltaY = y1-y2
+        let deltaY = 250 - y2
         //Get the sum of the squares
         let sumOfSquare = pow(Double(deltaX), 2) + pow(Double(deltaY), 2)
-
-        //finally, evalluate the square root
-        let result = sqrt(sumOfSquare)
         
+        //finally, evalluate the square root
+        var result = sqrt(sumOfSquare)
+        
+        // when the line appears
+        if pow(Double(deltaX),2) < 10000 {
+            result  = 0
+        }
+        
+        if pow(Double(deltaY), 2) < 10000 {
+            result = 0
+        }
+      
         // draw the line
         canvas.drawLine(fromX: x1, fromY: 250, toX: x2, toY: y2)
+        
     }
 }
 
