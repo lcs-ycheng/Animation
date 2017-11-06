@@ -43,7 +43,7 @@ class Sketch : NSObject {
         
         //clear the background
         canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
+//        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
         
         // Change position
         x1 += dx1
@@ -53,7 +53,7 @@ class Sketch : NSObject {
         
         //check the position and reverce course
         //if circle 1 go off the right edge of the screem
-        if x1 > 450{
+        if x1 > 500{
             dx1 = -2
         }
         
@@ -62,35 +62,35 @@ class Sketch : NSObject {
             dx1 = 2
         }
         //if circle 2 go off the right edge of the screem
-        if x2 > 350{
+        if x2 > 450{
             dx2 = -2
         }
         
         //if circle 2 go off the left edge of the screem
-        if x2 < 0 {
+        if x2 < 105 {
             dx2 = 2
         }
         //if circle 1 go off the up edge of the screem
-        if y1 > 450 {
+        if y1 > 475 {
             dy1 = -2
         }
         
         //if circle 1 go off the down edge of the screem
-        if y1 < 0{
+        if y1 < 10{
             dy1 = 2
         }
         //if circle 2 go off the up edge of the screem
-        if y2 > 400 {
+        if y2 > 254 {
             dy2 = -2
         }
         
         //if circle 2 go off the down edge of the screem
-        if y2 < 10{
+        if y2 < 38{
             dy2 = 2
         }
         // Draw an ellipse in the middle of the canvas
-        canvas.drawEllipse(centreX: x1, centreY: 250, width: 200, height: 200) // radius is 100
-        canvas.drawEllipse(centreX: x2, centreY: y2, width: 50, height: 50)    // radius is 25
+//        canvas.drawEllipse(centreX: x1, centreY: 250, width: 200, height: 200) // radius is 100
+//        canvas.drawEllipse(centreX: x2, centreY: y2, width: 50, height: 50)    // radius is 25
         
         //draw the line
         //work out the distance between these points
