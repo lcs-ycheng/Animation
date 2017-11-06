@@ -89,8 +89,8 @@ class Sketch : NSObject {
             dy2 = 2
         }
         // Draw an ellipse in the middle of the canvas
-        canvas.drawEllipse(centreX: x1, centreY: 250, width: 200, height: 200)
-        canvas.drawEllipse(centreX: x2, centreY: y2, width: 50, height: 50)
+        canvas.drawEllipse(centreX: x1, centreY: 250, width: 200, height: 200) // radius is 100
+        canvas.drawEllipse(centreX: x2, centreY: y2, width: 50, height: 50)    // radius is 25
         
         //draw the line
         //work out the distance between these points
@@ -102,19 +102,15 @@ class Sketch : NSObject {
         let sumOfSquare = pow(Double(deltaX), 2) + pow(Double(deltaY), 2)
         
         //finally, evalluate the square root
-        var result = sqrt(sumOfSquare)
+        let result = sqrt(sumOfSquare)
         
         // when the line appears
-        if pow(Double(deltaX),2) < 10000 {
-            result  = 0
+        if result < 125 {
+            // draw the line
+            canvas.drawLine(fromX: x1, fromY: 250, toX: x2, toY: y2)
+
         }
         
-        if pow(Double(deltaY), 2) < 10000 {
-            result = 0
-        }
-      
-        // draw the line
-        canvas.drawLine(fromX: x1, fromY: 250, toX: x2, toY: y2)
         
     }
 }
