@@ -1,5 +1,11 @@
 import Foundation
 
+extension Degrees {
+    func toRadians() -> Double {
+        return Double(self) * Double.pi / 180.0
+    }
+}
+
 class Sketch : NSObject {
     
     // NOTE: Every sketch must contain an object of type Canvas named 'canvas'
@@ -7,10 +13,9 @@ class Sketch : NSObject {
     let canvas : Canvas
     
     // Position of circle
-    var x : Int
-    
+    var x : Degrees
+    var y : Int
     //change in position
-    var dx : Int //difference in x
     
     // This function runs once
     override init() {
@@ -20,35 +25,23 @@ class Sketch : NSObject {
         
         // Set starting position
         x = 0
-        
-        //set the difference for x
-        dx = 3
+        y = 400
+       
     }
     
     // Runs in a loop, forever, to create the animated effect
     func draw() {
         
-        //clear the background
-        canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
-        
         // Change position
-        x += dx
+        x += 1
         
         //check the position and reverce course
-        //if we go off the right edge of the screem
-        if x > 500{
-            dx = -3
-        }
+        y = Int(100*sin(0.6937*Double(2*(x).toRadians()))+250)
         
-        //if we go off the left edge of the screem
-        if x < 0 {
-            dx = 3
-        }
-        
+        //make loops
+       
         // Draw an ellipse in the middle of the canvas
-        canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
+        canvas.drawEllipse(centreX: Int(x), centreY: y, width: 5, height: 5)
         
     }
     
