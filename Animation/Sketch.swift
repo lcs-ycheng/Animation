@@ -1,5 +1,4 @@
 import Foundation
-
 extension Degrees {
     func toRadians() -> Double {
         return Double(self) * Double.pi / 180.0
@@ -13,9 +12,10 @@ class Sketch : NSObject {
     let canvas : Canvas
    
     // Position of circle
-    var x : Degrees
-    var y : Int
-    
+    var x1 : Degrees
+    var y1 : Int
+    var x2 : Degrees
+    var y2 : Int
     // This function runs once
     override init() {
         
@@ -23,8 +23,11 @@ class Sketch : NSObject {
         canvas = Canvas(width: 500, height: 500)
         
         // Set starting position
-        x = 0
-        y = 400
+        x1 = 0
+        y1 = 400
+        x2 = 500
+        y2 = 400
+        
         //clear the background
         canvas.fillColor = Color.black
         canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
@@ -34,20 +37,25 @@ class Sketch : NSObject {
     // Runs in a loop, forever, to create the animated effect
     func draw() {
         // Change position
-        x += 1
-        
+        x1 += 1
+        x2 += -1
+
         //check the position and reverce course
-        y = Int(100*sin(0.6937*Double(2*(x).toRadians())))
+        y1 = Int(100*sin(0.7357*Double(2*(x1).toRadians())))
+        y2 = (Int(100*sin(0.7357*Double(2*(x2-490).toRadians()))))
     
         //make loops
             //change color
             canvas.drawShapesWithBorders = false
             for i in stride(from: 0, to: 450, by: 15){
             canvas.fillColor = Color(hue: i-10, saturation: 100, brightness: 100, alpha: 100)
-        // Draw an ellipse in the middle of the canvas
-        canvas.drawEllipse(centreX: Int(x), centreY: i+y, width: 5, height: 5)
-        
-                
+        //when the circle is in the middle
+           if x1 < 250{
+            canvas.drawEllipse(centreX: Int(x1), centreY: i+y1, width: 5, height: 5)
+              }
+           if x2 > 250 {
+                  canvas.drawEllipse(centreX: Int(x2), centreY: i+y2, width: 5, height: 5)
+               }
     }
     }
     
